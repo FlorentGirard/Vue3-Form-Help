@@ -27,28 +27,28 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       user: {
-        name: "",
-        email: "",
-        old: "",
-        sexe: "",
+        name: '',
+        email: '',
+        old: '',
+        sexe: '',
         extras: {
           music: false,
           catering: false,
         },
-        pets: "1",
+        pets: '1',
       },
-      sexes: ["M", "F", "Autre"],
+      sexes: ['M', 'F', 'Autre'],
       petOptions: [
-        { label: "Yes", value: 1 },
-        { label: "No", value: 0 },
+        { label: 'Yes', value: 1 },
+        { label: 'No', value: 0 },
       ],
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss">
