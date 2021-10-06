@@ -7,6 +7,12 @@
     <BaseInput v-model="user.old" label="old" type="number" />
 
     <BaseSelect :options="sexes" v-model="user.sexe" label="Select a sexe" />
+    <div class="field">
+      <BaseCheckbox v-model="user.extras.music" label="Music" />
+    </div>
+    <div class="field">
+      <BaseCheckbox v-model="user.extras.catering" label="Catering" />
+    </div>
   </form>
 </template>
 
@@ -20,6 +26,10 @@ export default {
         email: "",
         old: "",
         sexe: "",
+        extras: {
+          music: false,
+          catering: false,
+        },
       },
       sexes: ["M", "F", "Autre"],
     };
