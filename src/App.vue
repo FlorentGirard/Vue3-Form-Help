@@ -13,6 +13,13 @@
     <div class="field">
       <BaseCheckbox v-model="user.extras.catering" label="Catering" />
     </div>
+    <h3>Are pets allowed?</h3>
+    <div class="field">
+      <BaseRadio v-model="user.pets" :value="1" label="Yes" name="pets" />
+    </div>
+    <div class="field">
+      <BaseRadio v-model="user.pets" :value="0" label="No" name="pets" />
+    </div>
   </form>
 </template>
 
@@ -30,6 +37,7 @@ export default {
           music: false,
           catering: false,
         },
+        pets: "1",
       },
       sexes: ["M", "F", "Autre"],
     };
