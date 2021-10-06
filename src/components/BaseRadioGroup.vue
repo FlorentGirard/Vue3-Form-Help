@@ -16,6 +16,7 @@
     />
   </component>
 </template>
+
 <script>
 export default {
   props: {
@@ -38,6 +39,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .horizontal {
   margin-right: 20px;

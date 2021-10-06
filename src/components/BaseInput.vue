@@ -1,17 +1,16 @@
 <template>
   <div class="field">
-    <label class="label">{{ label }}</label>
-    <div class="control">
-      <input
-        v-bind="$attrs"
-        :value="modelValue"
-        :placeholder="label"
-        class="input"
-        @input="$emit('update:modelValue', $event.target.value)"
-      />
-    </div>
+    <label v-if="label" class="label">{{ label }}</label>
+    <input
+      v-bind="$attrs"
+      :value="modelValue"
+      :placeholder="label"
+      @input="$emit('update:modelValue', $event.target.value)"
+      class="input"
+    />
   </div>
 </template>
+
 <script>
 export default {
   props: {
