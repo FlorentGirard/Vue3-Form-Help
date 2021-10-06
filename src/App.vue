@@ -1,5 +1,5 @@
 <template>
-  <form class="container">
+  <form class="container" @submit.prevent="sendForm">
     <h1 class="title">Simple Formulaire</h1>
 
     <BaseInput v-model="user.name" label="Name" type="text" />
@@ -47,6 +47,9 @@ export default {
         { label: 'No', value: 0 },
       ],
     }
+  },
+  methods: {
+    sendForm() {},
   },
 }
 </script>
