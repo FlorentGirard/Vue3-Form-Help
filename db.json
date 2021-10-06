@@ -1,1 +1,16 @@
-
+{
+    "events": [
+        {
+            "id": 1,
+            "title": "French title",
+            "description": "Vue componen,t",
+            "author": "MasTenNcode",
+            "category": "art",
+            "picture": 1,
+            "language": {
+                "english": true,
+                "french": true
+            }
+        }
+    ]
+}
