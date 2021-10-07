@@ -9,7 +9,17 @@
       @input="$emit('update:modelValue', $event.target.value)"
       class="input"
       :id="uuid"
+      :aria-describedby="error ? `${uuid}-error` : null"
+      :aria-invalid="error ? true : null"
     />
+    <p
+      v-if="error"
+      class="errorMessage"
+      :id="`${uuid}-error`"
+      aria-live="assertive"
+    >
+      {{ error }}
+    </p>
   </div>
 </template>
 
@@ -23,6 +33,10 @@ export default {
     },
     modelValue: {
       type: [String, Number],
+      default: '',
+    },
+    error: {
+      type: String,
       default: '',
     },
   },

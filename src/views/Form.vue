@@ -9,6 +9,7 @@
           v-model="event.description"
           label="Description"
           type="text"
+          error="this input has an error"
         />
         <BaseInput v-model="event.author" label="Author" type="text" />
       </fieldset>
@@ -47,6 +48,7 @@ export default {
   data() {
     return {
       categories: ['art', 'Photo', 'dessein', 'divers'],
+
       event: {
         category: '',
         title: '',
