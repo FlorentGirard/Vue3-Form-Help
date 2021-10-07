@@ -27,4 +27,7 @@
     }
   }
 }
+.error {
+  border-color: #f14668;
+}
 </style>

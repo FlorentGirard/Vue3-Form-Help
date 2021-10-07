@@ -1,3 +1,4 @@
+/* eslint-disable vue/no-parsing-error */
 <template>
   <div class="field">
     <label :for="uuid" v-if="label" class="label">{{ label }} </label>
@@ -8,13 +9,14 @@
       :placeholder="label"
       @input="$emit('update:modelValue', $event.target.value)"
       class="input"
+      :class="{ 'is-danger': error }"
       :id="uuid"
       :aria-describedby="error ? `${uuid}-error` : null"
       :aria-invalid="error ? true : null"
     />
     <p
       v-if="error"
-      class="errorMessage"
+      class="help is-danger"
       :id="`${uuid}-error`"
       aria-live="assertive"
     >
@@ -48,3 +50,4 @@ export default {
   },
 }
 </script>
+<style lang="scss"></style>

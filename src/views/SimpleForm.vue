@@ -34,6 +34,7 @@
       <BaseCheckbox v-model="event.language.english" label="English" />
 
       <BaseCheckbox v-model="event.language.french" label="French" />
+
       <button type="submit" class="button is-link">Submit</button>
     </form>
 
