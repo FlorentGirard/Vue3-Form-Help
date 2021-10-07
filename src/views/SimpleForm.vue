@@ -35,6 +35,8 @@
 
       <BaseCheckbox v-model="event.language.french" label="French" />
 
+      <BaseTextArea v-model="event.text" label="text" />
+
       <button type="submit" class="button is-link">Submit</button>
     </form>
 
@@ -60,6 +62,7 @@ export default {
           english: false,
           french: false,
         },
+        text: '',
       },
       pictureOptions: [
         { label: 'Yes', value: 1 },

@@ -3,21 +3,25 @@
   <form @submit.prevent="onSubmit">
     <BaseInput label="Email" type="email" v-model="email" :error="emailError" />
 
-    <BaseInput label="Password" type="password" />
+    <BaseInput
+      label="Password"
+      type="password"
+      v-model="password"
+      :error="passwordError"
+    />
     <button type="submit" class="button is-link">Submit</button>
   </form>
 </template>
 
 <script>
-import { useField } from 'vee-validate'
+import { useField, useForm } from 'vee-validate'
 export default {
   setup() {
     function onSubmit() {
       alert('Submitted')
     }
-    const { value: email, errorMessage: emailError } = useField(
-      'email',
-      (value) => {
+    const validations = {
+      email: (value) => {
         if (!value) return 'This field is required'
         const regex =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -25,15 +29,28 @@ export default {
           return 'Please enter a valid email address'
         }
         return true
-      }
-    )
+      },
+      password: (value) => {
+        const requiredMessage = 'This field is required'
+        if (value === undefined || value === null) return requiredMessage
+        if (!String(value).length) return requiredMessage
+        return true
+      },
+    }
+    useForm({
+      validationSchema: validations,
+    })
+    const { value: email, errorMessage: emailError } = useField('email')
+    const { value: password, errorMessage: passwordError } =
+      useField('password')
     return {
       onSubmit,
       email,
       emailError,
+      password,
+      passwordError,
     }
   },
 }
 </script>
-
 <style lang="scss"></style>
