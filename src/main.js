@@ -7,6 +7,7 @@ import App from './App.vue'
 import upperFirst from 'lodash/upperFirst'
 // camelCase converts a string to camel case (camelCase isWritten likeThis)
 import camelCase from 'lodash/camelCase'
+import router from './router'
 
 //require.context to allow webpack to know that it needs to require all of the files in the components folder that start with the Base
 const requireComponent = require.context(
@@ -15,7 +16,7 @@ const requireComponent = require.context(
   /Base[A-Z]\w+\.(vue|js)$/
 )
 
-const app = createApp(App)
+const app = createApp(App).use(router)
 
 // We are going to loop through each of our components in this array ( parcours les composants dans le tableau).
 requireComponent.keys().forEach((fileName) => {
