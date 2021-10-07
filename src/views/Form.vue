@@ -2,9 +2,16 @@
   <div>
     <h1 class="title">Example Form component</h1>
     <form @submit.prevent="sendForm">
-      <BaseInput v-model="event.title" label="Title" type="text" />
-      <BaseInput v-model="event.description" label="Description" type="text" />
-      <BaseInput v-model="event.author" label="Author" type="text" />
+      <fieldset>
+        <legend>Title & description & author</legend>
+        <BaseInput v-model="event.title" label="Title" type="text" />
+        <BaseInput
+          v-model="event.description"
+          label="Description"
+          type="text"
+        />
+        <BaseInput v-model="event.author" label="Author" type="text" />
+      </fieldset>
 
       <BaseSelect
         :options="categories"
@@ -12,20 +19,20 @@
         label="Select a category"
       />
 
-      <label class="label">Are there any pictures ?</label>
+      <fieldset>
+        <legend class="label">Are there any pictures</legend>
+        <BaseRadioGroup
+          v-model="event.picture"
+          name="picture"
+          :options="pictureOptions"
+        />
+      </fieldset>
 
-      <BaseRadioGroup
-        v-model="event.picture"
-        name="picture"
-        :options="pictureOptions"
-      />
-
-      <label class="label"> available Language </label>
+      <legend class="label">available Language</legend>
 
       <BaseCheckbox v-model="event.language.english" label="English" />
 
       <BaseCheckbox v-model="event.language.french" label="French" />
-
       <button type="submit" class="button is-link">Submit</button>
     </form>
 

@@ -5,11 +5,13 @@
     :value="value"
     v-bind="$attrs"
     @change="$emit('update:modelValue', value)"
+    :id="uuid"
   />
-  <label v-if="label">{{ label }}</label>
+  <label :for="uuid" class="label">{{ label }}</label>
 </template>
 
 <script>
+import UniqueID from '../features/UniqueID'
 export default {
   props: {
     label: {
@@ -24,6 +26,12 @@ export default {
       type: [String, Number],
       required: true,
     },
+  },
+  setup() {
+    const uuid = UniqueID().getID()
+    return {
+      uuid,
+    }
   },
 }
 </script>
