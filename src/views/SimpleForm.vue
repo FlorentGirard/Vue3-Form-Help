@@ -3,15 +3,19 @@
     <h1 class="title">Example Form component</h1>
     <form @submit.prevent="sendForm">
       <fieldset>
-        <legend>Title & description & author</legend>
+        <legend class="is-show">Title & description & author</legend>
         <BaseInput v-model="event.title" label="Title" type="text" />
         <BaseInput
           v-model="event.description"
           label="Description"
           type="text"
-          error="this input has an error"
         />
         <BaseInput v-model="event.author" label="Author" type="text" />
+      </fieldset>
+
+      <fieldset>
+        <legend class="is-show">Text</legend>
+        <BaseTextArea v-model="event.text" label="text" />
       </fieldset>
 
       <BaseSelect
@@ -26,6 +30,7 @@
           v-model="event.picture"
           name="picture"
           :options="pictureOptions"
+          vertical
         />
       </fieldset>
 
@@ -35,9 +40,7 @@
 
       <BaseCheckbox v-model="event.language.french" label="French" />
 
-      <BaseTextArea v-model="event.text" label="text" />
-
-      <button type="submit" class="button is-link">Submit</button>
+      <BaseButton type="submit" something="else"> submit </BaseButton>
     </form>
 
     <pre>{{ event }}</pre>
@@ -87,3 +90,9 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.is-show {
+  position: absolute;
+  opacity: 0;
+}
+</style>

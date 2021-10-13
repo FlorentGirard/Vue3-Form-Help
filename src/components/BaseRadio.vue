@@ -7,7 +7,7 @@
     @change="$emit('update:modelValue', value)"
     :id="uuid"
   />
-  <label :for="uuid" class="label">{{ label }}</label>
+  <label :for="uuid">{{ label }}</label>
 </template>
 
 <script>
