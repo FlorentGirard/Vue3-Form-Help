@@ -7,6 +7,9 @@
       :id="uuid"
     />
     <label v-if="label" :for="uuid" class="checkbox">{{ label }}</label>
+    <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
+      {{ error }}
+    </BaseErrorMessage>
   </div>
 </template>
 
@@ -21,6 +24,10 @@ export default {
     modelValue: {
       type: Boolean,
       default: false,
+    },
+    error: {
+      type: Text,
+      default: '',
     },
   },
   setup() {

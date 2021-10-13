@@ -14,14 +14,9 @@
       :aria-describedby="error ? `${uuid}-error` : null"
       :aria-invalid="error ? true : null"
     />
-    <p
-      v-if="error"
-      class="help is-danger"
-      :id="`${uuid}-error`"
-      aria-live="assertive"
-    >
+    <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
       {{ error }}
-    </p>
+    </BaseErrorMessage>
   </div>
 </template>
 

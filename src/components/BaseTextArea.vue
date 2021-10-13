@@ -11,6 +11,9 @@
       @input="$emit('update:modelValue', $event.target.value)"
       :id="uuid"
     ></textarea>
+    <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
+      {{ error }}
+    </BaseErrorMessage>
   </div>
 </template>
 
@@ -24,6 +27,10 @@ export default {
     },
     modelValue: {
       type: [String],
+      default: '',
+    },
+    error: {
+      type: String,
       default: '',
     },
   },

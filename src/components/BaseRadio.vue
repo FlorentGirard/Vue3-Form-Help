@@ -8,6 +8,9 @@
     :id="uuid"
   />
   <label :for="uuid">{{ label }}</label>
+  <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
+    {{ error }}
+  </BaseErrorMessage>
 </template>
 
 <script>
@@ -25,6 +28,10 @@ export default {
     value: {
       type: [String, Number],
       required: true,
+    },
+    error: {
+      type: String,
+      default: '',
     },
   },
   setup() {

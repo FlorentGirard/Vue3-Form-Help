@@ -21,6 +21,9 @@
         {{ option }}
       </option>
     </select>
+    <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
+      {{ error }}
+    </BaseErrorMessage>
   </div>
 </template>
 
@@ -39,6 +42,10 @@ export default {
     options: {
       type: Array,
       required: true,
+    },
+    error: {
+      type: String,
+      default: '',
     },
   },
   setup() {
