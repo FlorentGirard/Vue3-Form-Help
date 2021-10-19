@@ -30,4 +30,8 @@
 .error {
   border-color: #f14668;
 }
+.is-show {
+  position: absolute;
+  opacity: 0;
+}
 </style>

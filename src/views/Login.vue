@@ -1,27 +1,35 @@
 <template>
   <h1 class="title">Login page</h1>
   <form @submit.prevent="submit">
-    <BaseInput
-      label="Email"
-      type="email"
-      icon="fas fa-envelope"
-      :error="errors.email"
-      :modelValue="email"
-      @change="handleChange"
-    />
-
-    <BaseInput
-      label="Password"
-      type="password"
-      icon="fas fa-lock"
-      v-model="password"
-      :error="errors.password"
-    />
-    <BaseButton type="submit" something="else"> submit </BaseButton>
+    <fieldset class="fieldset">
+      <legend class="is-show">Email</legend>
+      <BaseInput
+        label="Email"
+        type="email"
+        icon="fas fa-envelope"
+        :error="errors.email"
+        :modelValue="email"
+        @change="handleChange"
+      />
+    </fieldset>
+    <fieldset class="fieldset">
+      <legend class="is-show">Password</legend>
+      <BaseInput
+        label="Password"
+        type="password"
+        icon="fas fa-lock"
+        v-model="password"
+        :error="errors.password"
+      />
+    </fieldset>
+    <BaseButton type="submit" something="else" class="button">
+      submit
+    </BaseButton>
   </form>
 </template>
 
 <script>
+import axios from 'axios'
 import { useField, useForm } from 'vee-validate'
 import { object, string } from 'yup'
 export default {
@@ -38,7 +46,18 @@ export default {
     const { value: email, handleChange } = useField('email')
     const { value: password } = useField('password')
     const submit = handleSubmit((values) => {
-      console.log('submit', values)
+      console.log('envoyé', values)
+      axios
+        .post(
+          'https://my-json-server.typicode.com/FlorentGirard/Vue3-Form-Help/events',
+          values
+        )
+        .then(function (response) {
+          console.log('Response', response)
+        })
+        .catch(function (err) {
+          console.log('Error', err)
+        })
     })
     return {
       email,
@@ -93,4 +112,8 @@ export default {
 input we can use function named setFieldValue from useForm *const {
 setFieldValue } = useForm(...) setFieldValue('email', 'test@test.com') more info
 in https://vee-validate.logaretm.com/v4/api/use-form#composable-api */
+
+.fieldset {
+  margin: 1rem 0;
+}
 </style>

@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { useField, useForm } from 'vee-validate'
 import { object, string, number, boolean } from 'yup'
 
@@ -107,7 +108,18 @@ export default {
     const { value: english } = useField('english')
     const { value: french } = useField('french')
     const submit = handleSubmit((values) => {
-      console.log('submit', values)
+      console.log('envoyé', values)
+      axios
+        .post(
+          'https://my-json-server.typicode.com/FlorentGirard/Vue3-Form-Help/events',
+          values
+        )
+        .then(function (response) {
+          console.log('Response', response)
+        })
+        .catch(function (err) {
+          console.log('Error', err)
+        })
     })
     return {
       title,
@@ -124,9 +136,4 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.is-show {
-  position: absolute;
-  opacity: 0;
-}
-</style>
+<style lang="scss" scoped></style>
