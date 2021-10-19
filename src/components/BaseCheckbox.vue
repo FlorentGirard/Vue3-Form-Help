@@ -26,7 +26,7 @@ export default {
       default: false,
     },
     error: {
-      type: Text,
+      type: String,
       default: '',
     },
   },
