@@ -2,18 +2,23 @@
 <template>
   <div class="field">
     <label :for="uuid" v-if="label" class="label">{{ label }} </label>
+    <div :class="{ 'control has-icons-left ': icon }">
+      <input
+        v-bind="$attrs"
+        :value="modelValue"
+        :placeholder="label"
+        @input="$emit('update:modelValue', $event.target.value)"
+        class="input test"
+        :class="{ 'is-danger': error }"
+        :id="uuid"
+        :aria-describedby="error ? `${uuid}-error` : null"
+        :aria-invalid="error ? true : null"
+      />
+      <span v-if="icon" class="icon is-small is-left test2">
+        <i :class="icon"></i>
+      </span>
+    </div>
 
-    <input
-      v-bind="$attrs"
-      :value="modelValue"
-      :placeholder="label"
-      @input="$emit('update:modelValue', $event.target.value)"
-      class="input"
-      :class="{ 'is-danger': error }"
-      :id="uuid"
-      :aria-describedby="error ? `${uuid}-error` : null"
-      :aria-invalid="error ? true : null"
-    />
     <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
       {{ error }}
     </BaseErrorMessage>
@@ -33,6 +38,10 @@ export default {
       default: '',
     },
     error: {
+      type: String,
+      default: '',
+    },
+    icon: {
       type: String,
       default: '',
     },

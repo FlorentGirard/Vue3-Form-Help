@@ -4,6 +4,7 @@
     <BaseInput
       label="Email"
       type="email"
+      icon="fas fa-envelope"
       :error="errors.email"
       :modelValue="email"
       @change="handleChange"
@@ -12,6 +13,7 @@
     <BaseInput
       label="Password"
       type="password"
+      icon="fas fa-lock"
       v-model="password"
       :error="errors.password"
     />
