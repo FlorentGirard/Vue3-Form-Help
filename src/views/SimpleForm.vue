@@ -35,7 +35,6 @@
         label="Select a category"
         :error="errors.category"
       />
-
       <fieldset>
         <legend class="label">Are there any pictures</legend>
         <BaseRadioGroup
@@ -47,15 +46,17 @@
         />
       </fieldset>
 
-      <legend class="label">available Language</legend>
+      <fieldset>
+        <legend class="label">available Language</legend>
+        <BaseCheckbox
+          v-model="english"
+          label="English"
+          :error="errors.english"
+        />
+        <BaseCheckbox v-model="french" label="French" :error="errors.french" />
+      </fieldset>
 
-      <BaseCheckbox v-model="english" label="English" :error="errors.english" />
-
-      <BaseCheckbox v-model="french" label="French" :error="errors.french" />
-
-      <BaseButton type="submit" something="else" @click="sendForm">
-        submit
-      </BaseButton>
+      <BaseButton type="submit" something="else"> submit </BaseButton>
     </form>
 
     <!-- <pre>{{ event }}</pre> -->
@@ -63,7 +64,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { useField, useForm } from 'vee-validate'
 import { object, string, number, boolean } from 'yup'
 
@@ -121,22 +121,6 @@ export default {
       submit,
       errors,
     }
-  },
-  methods: {
-    sendForm() {
-      console.log('envoyé')
-      axios
-        .post(
-          'https://my-json-server.typicode.com/FlorentGirard/Vue3-Form-Help/events',
-          this.event
-        )
-        .then(function (response) {
-          console.log('Response', response)
-        })
-        .catch(function (err) {
-          console.log('Error', err)
-        })
-    },
   },
 }
 </script>
