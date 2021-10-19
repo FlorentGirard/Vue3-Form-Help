@@ -1,7 +1,13 @@
 <template>
   <h1 class="title">Login page</h1>
   <form @submit.prevent="onSubmit">
-    <BaseInput label="Email" type="email" v-model="email" :error="emailError" />
+    <BaseInput
+      label="Email"
+      type="email"
+      :error="emailError"
+      :modelValue="email"
+      @change="handlechange"
+    />
 
     <BaseInput
       label="Password"
@@ -40,7 +46,17 @@ export default {
     useForm({
       validationSchema: validations,
     })
-    const { value: email, errorMessage: emailError } = useField('email')
+    /*
+     *lazyloading  for simple form we can use a methode handleChange for a multiple input we can use function named setFieldValue from useForm
+     *const { setFieldValue } = useForm(...)
+     setFieldValue('email', 'test@test.com')
+     more info in https://vee-validate.logaretm.com/v4/api/use-form#composable-api
+     */
+    const {
+      value: email,
+      errorMessage: emailError,
+      handleChange,
+    } = useField('email')
     const { value: password, errorMessage: passwordError } =
       useField('password')
     return {
@@ -49,6 +65,7 @@ export default {
       emailError,
       password,
       passwordError,
+      handleChange,
     }
   },
 }

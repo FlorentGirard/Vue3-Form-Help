@@ -53,7 +53,9 @@
 
       <BaseCheckbox v-model="french" label="French" :error="errors.french" />
 
-      <BaseButton type="submit" something="else"> submit </BaseButton>
+      <BaseButton type="submit" something="else" @click="sendForm">
+        submit
+      </BaseButton>
     </form>
 
     <!-- <pre>{{ event }}</pre> -->
@@ -70,18 +72,6 @@ export default {
     return {
       categories: ['art', 'Photo', 'dessein', 'divers'],
 
-      /*   event: {
-        category: '',
-        title: '',
-        description: '',
-        author: '',
-        picture: 1,
-        language: {
-          english: false,
-          french: false,
-        },
-        text: '',
-      },*/
       pictureOptions: [
         { label: 'Yes', value: 1 },
         { label: 'No', value: 0 },
@@ -134,6 +124,7 @@ export default {
   },
   methods: {
     sendForm() {
+      console.log('envoyé')
       axios
         .post(
           'https://my-json-server.typicode.com/FlorentGirard/Vue3-Form-Help/events',
